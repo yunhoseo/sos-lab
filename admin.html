@@ -151,7 +151,6 @@ h1{margin:0;font-size:26px;font-weight:800;letter-spacing:-.02em;text-wrap:balan
   .mform input{flex-basis:140px}
 }
 .note{background:var(--sunk);border:1px solid var(--line);border-left:3px solid var(--warn);border-radius:9px;padding:10px 12px;font-size:13.5px}
-.deploy{background:var(--sunk);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:9px;padding:10px 12px;font-size:13px}
 .hint{color:var(--muted);font-size:12.5px;margin:8px 0 0}
 .empty{text-align:center;color:var(--muted);padding:28px 10px}
 .login{max-width:340px;margin:18vh auto;padding:28px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);display:flex;flex-direction:column;gap:10px}
@@ -559,7 +558,6 @@ function render(){
   syncSave();
 
   if(msg) w.appendChild(el("div","note",msg));
-  w.appendChild(el("div","deploy","이 화면은 관리자 전용 원본입니다. 학생 배포용 아티팩트에 반영하려면 Claude Code에서 “연구실 일정 배포해줘”라고 요청하세요 (학생 시간표는 보존됩니다)."));
 
   onPaint=null;
   if(view==="sem"){ renderSeminar(w); return; }
