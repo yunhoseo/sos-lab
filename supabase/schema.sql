@@ -15,7 +15,8 @@ alter table students  enable row level security;
 alter table lab_state enable row level security;
 alter table admins    enable row level security;   -- 정책 없음 = API로는 읽기/쓰기 불가
 
-create or replace function is_admin() returns boolean language sql stable as $$
+-- security definer: admins 테이블은 정책이 없어 호출자 권한으로는 항상 빈 결과이므로 소유자 권한으로 조회
+create or replace function is_admin() returns boolean language sql stable security definer set search_path=public as $$
   select exists (select 1 from admins where email = auth.jwt()->>'email');
 $$;
 
