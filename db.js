@@ -1,4 +1,8 @@
 // db.js — index.html / admin.html 공용 Supabase 글루. config.js(SUPABASE_URL, SUPABASE_ANON_KEY) 뒤에 로드.
+if(!SUPABASE_URL||!SUPABASE_ANON_KEY){
+  document.body.innerHTML='<p style="padding:24px;font-family:system-ui">아직 Supabase 연결 전입니다 — config.js에 SUPABASE_URL / SUPABASE_ANON_KEY를 넣어 주세요.</p>';
+  throw new Error("config.js: Supabase 설정 없음");
+}
 var DB=(function(){
   var sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
   function chk(r){ if(r.error) throw r.error; return r.data; }
